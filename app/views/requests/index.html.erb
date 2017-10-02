@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Requests</h1>
+<div class="row">
+  <div class="col-md-3"><b>User</b></div>
+  <div class="col-md-3"><b>Client</b></div>
+  <div class="col-md-3"><b>Observations</b></div>
+  <div class="col-md-3"><b>Operations</b></div>
+</div>
+<br>
+<% @requests.each do |request| %>
+<div class="row">
+  <div class="col-md-3"><%= request.user.name %></div>
+  <div class="col-md-3"><%= request.client %></div>
+  <div class="col-md-3"><%= request.observations %></div>
+  <div class="col-md-3">
+    <%= link_to 'Show', request %>
+    <%= link_to 'Edit', edit_request_path(request) %>
+    <%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+</div><br>
+<% end %>
+<%= link_to 'New Request', new_request_path %>

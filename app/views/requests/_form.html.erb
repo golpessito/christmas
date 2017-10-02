@@ -1,0 +1,43 @@
+<%= form_for(request) do |f| %>
+  <% if request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(request.errors.count, "error") %> prohibited this request from being saved:</h2>
+      <ul>
+      <% request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-1">
+      <%= f.label :user_id %>
+    </div>
+    <div class="col-md-6">
+     <%= f.select :user_id, User.all.collect {|e| [e.name, e.id]},{},{:class => 'form-control'} %>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-md-1">
+      <%= f.label :client %>
+    </div>
+    <div class="col-md-1">
+      <%= f.text_field :client %>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-md-1">
+      <%= f.label :observations %>
+    </div>
+    <div class="col-md-1">
+      <%= f.text_area :observations %>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-1">
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>
